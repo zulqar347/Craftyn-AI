@@ -63,6 +63,7 @@ export const POST = async (req: Request) => {
       },
     );
   } catch (error) {
+    console.error("🔥 PROFILE GENERATION ERROR:", error);
     if (error instanceof ZodError) {
       return NextResponse.json(
         {
@@ -74,8 +75,6 @@ export const POST = async (req: Request) => {
         },
       );
     }
-
-    console.error(error);
 
     return NextResponse.json(
       {

@@ -54,7 +54,10 @@ export function ProfileGeneratorPage() {
   );
 
   async function submit() {
-    const result = await generate.mutateAsync(platform);
+    const result = await generate.mutateAsync({
+      platform,
+    });
+
     setCurrent(result);
   }
 

@@ -11,8 +11,10 @@ async function generate<T>(
   systemInstruction: string,
   userContent: string,
 ): Promise<T> {
+  console.log("🔥 AI GENERATION STARTED");
+  console.log("Model:", "openai/gpt-oss-20b");
   const response = await openai.chat.completions.create({
-   model: "llama-3.3-70b-versatile",
+    model: "openai/gpt-oss-20b",
     messages: [
       { role: "system", content: systemInstruction },
       { role: "user", content: userContent },
@@ -20,7 +22,7 @@ async function generate<T>(
     response_format: { type: "json_object" },
     temperature: 0.7,
   });
-
+  console.log("✅ AI GENERATION SUCCESS");
   const rawText = response.choices[0]?.message?.content;
 
   if (!rawText) {
